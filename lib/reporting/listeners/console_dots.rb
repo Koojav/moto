@@ -46,6 +46,7 @@ module Moto
         end
 
         def end_test(test_status)
+          STDOUT.sync = true
           print case test_status.results.last.code
           when Moto::Test::Result::PASSED   then '.'
           when Moto::Test::Result::FAILURE  then 'F'
@@ -53,6 +54,7 @@ module Moto
           when Moto::Test::Result::SKIPPED  then 's'
           end
           STDOUT.flush
+          $stdout.flush
         end
 
       end
